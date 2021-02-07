@@ -1,0 +1,8 @@
+org\learnings\jpa\object\relational\impedance\service\BookStoreService.class
+org\learnings\jpa\object\relational\impedance\client\BookStoreClient.class
+org\learnings\jpa\object\relational\impedance\hello\world\client\HelloWorldClient.class
+org\learnings\jpa\object\relational\impedance\model\Book.class
+org\learnings\jpa\object\relational\impedance\model\Chapter.class
+org\learnings\jpa\object\relational\impedance\hello\world\utils\HibernateUtils.class
+org\learnings\jpa\object\relational\impedance\hello\world\model\Message.class
+org\learnings\jpa\object\relational\impedance\model\Publisher.class
