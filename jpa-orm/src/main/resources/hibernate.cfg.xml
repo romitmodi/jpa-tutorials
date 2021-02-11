@@ -18,5 +18,6 @@
 
 		<!-- Entity Object details -->
 		<mapping class="org.learnings.jpa.object.relational.impedance.hello.world.model.Message" />
+		<mapping class="org.learnings.jpa.object.relational.impedance.model.component.Person" />
 	</session-factory>
 </hibernate-configuration>
