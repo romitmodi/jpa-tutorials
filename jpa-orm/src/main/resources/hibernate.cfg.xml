@@ -21,5 +21,7 @@
 		<mapping class="org.learnings.jpa.object.relational.impedance.model.component.Person" />
 		<mapping class="org.learnings.jpa.object.relational.impedance.model.cascade.Guide"/>
 		<mapping class="org.learnings.jpa.object.relational.impedance.model.cascade.Student"/>
+		<mapping class="org.learnings.jpa.object.relational.impedance.model.onetoone.Customer"/>
+		<mapping class="org.learnings.jpa.object.relational.impedance.model.onetoone.Passport"/>
 	</session-factory>
 </hibernate-configuration>
