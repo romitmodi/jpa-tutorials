@@ -16,7 +16,7 @@ public class CompositeKeyClient {
 		Parent parent = new Parent(key);
 		Child child = new Child("Romit", null);
 		parent.addChild(child);
-		session.save(parent);
+		session.persist(parent);
 
 		session.getTransaction().commit();
 		session.close();
