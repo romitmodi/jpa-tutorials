@@ -23,5 +23,10 @@
 		<mapping class="org.learnings.jpa.object.relational.impedance.model.cascade.Student"/>
 		<mapping class="org.learnings.jpa.object.relational.impedance.model.onetoone.Customer"/>
 		<mapping class="org.learnings.jpa.object.relational.impedance.model.onetoone.Passport"/>
+		<mapping class="org.learnings.jpa.object.relational.impedance.model.manytomany.Actor"/>
+		<mapping class="org.learnings.jpa.object.relational.impedance.model.manytomany.Movie"/>
+		<mapping class="org.learnings.jpa.object.relational.impedance.model.enums.Employee"/>
+		<mapping class="org.learnings.jpa.object.relational.impedance.model.composite.key.Parent"/>
+		<mapping class="org.learnings.jpa.object.relational.impedance.model.composite.key.Child"/>
 	</session-factory>
 </hibernate-configuration>
