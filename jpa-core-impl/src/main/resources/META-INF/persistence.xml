@@ -12,13 +12,14 @@
         <class>org.learning.jpa.tutorials.core.impl.entity.Address</class>
         <class>org.learning.jpa.tutorials.core.impl.entity.Student</class>
         <class>org.learning.jpa.tutorials.core.impl.entity.Library</class>
+        <class>org.learning.jpa.tutorials.core.impl.message.model.Message</class>
 		<properties>
-			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_datastore" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="rootpassword" />
+			<property name="hibernate.hbm2ddl.auto" value="none"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 		</properties>
 	</persistence-unit>
 </persistence>
