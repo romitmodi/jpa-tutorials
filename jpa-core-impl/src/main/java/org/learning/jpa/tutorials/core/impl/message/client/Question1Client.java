@@ -12,9 +12,18 @@ public class Question1Client {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("student_details");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
-		updateMessage(entityManager);
+		Message message =entityManager.find(Message.class, 1);
 		entityManager.getTransaction().commit();
 		entityManager.close();
+		
+		EntityManager entityManager1 = entityManagerFactory.createEntityManager();
+		entityManager1.getTransaction().begin();
+		Message message1 =entityManager1.find(Message.class, 1);
+		
+		System.out.println(message.equals(message1));
+		
+		entityManager1.getTransaction().commit();
+		entityManager1.close();
 		entityManagerFactory.close();
 	}
 
