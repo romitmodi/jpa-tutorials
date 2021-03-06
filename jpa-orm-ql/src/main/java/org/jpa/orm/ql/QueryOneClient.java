@@ -8,6 +8,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
 
 import org.jpa.orm.ql.entity.Guide;
 import org.jpa.orm.ql.entity.Student;
@@ -58,6 +63,24 @@ public class QueryOneClient {
 	}
 
 	private static void criteriaApiTransaction(EntityManager entityManager) {
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		// Scenario:-1 complete entity object
+		CriteriaQuery<Guide> criteriaQuery = builder.createQuery(Guide.class);
+		Root<Guide> root = criteriaQuery.from(Guide.class);
+		criteriaQuery.select(root);
+		TypedQuery<Guide> typedQuery = entityManager.createQuery(criteriaQuery);
+		List<Guide> guides = typedQuery.getResultList();
+		guides.forEach(g -> System.out.println(g.toString()));
 
+		// Scenario:-2 single attributes
+		CriteriaQuery<String> criteriaQuery2 = builder.createQuery(String.class);
+		root = criteriaQuery2.from(Guide.class);
+		Path<String> path = root.get("name");
+		criteriaQuery2.select(path);
+		TypedQuery<String> typedQuery2 = entityManager.createQuery(criteriaQuery2);
+		List<String> guidesName = typedQuery2.getResultList();
+		guidesName.forEach(g -> System.out.println(g.toString()));
+
+		// Scenario:-3 multiple attributes
 	}
 }
