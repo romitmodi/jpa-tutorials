@@ -13,7 +13,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
 
 import org.jpa.orm.ql.entity.Guide;
 import org.jpa.orm.ql.entity.Student;
@@ -27,7 +26,7 @@ public class QueryOneClient {
 		transaction.begin();
 
 		Guide g1 = new Guide("Rajat Modi", BigDecimal.valueOf(100000), "01SEP1989");
-		Guide g2 = new Guide("Kunji Lal Agarwal", BigDecimal.valueOf(1000000), "05JUL1964");
+		Guide g2 = new Guide("Kunji Lal Agarwal", BigDecimal.valueOf(10000000), "05JUL1964");
 
 		Student s1 = new Student("2021MAR06", "Romit", g1);
 		Student s2 = new Student("e1", "newTest", null);
@@ -99,5 +98,14 @@ public class QueryOneClient {
 		TypedQuery<Object[]> typedQuery4 = entityManager.createQuery(criteriaQuery3);
 		List<Object[]> objects1 = typedQuery4.getResultList();
 		objects1.forEach(o -> System.out.println(o[0] + " " + o[1]));
+
+		// Scenario:- 4 filtering Data
+		CriteriaQuery<Guide> criteriaQuery4 = builder.createQuery(Guide.class);
+		root = criteriaQuery4.from(Guide.class);
+		criteriaQuery4.where(builder.greaterThan(root.get("salary"), 1000000));
+		criteriaQuery4.select(root);
+		TypedQuery<Guide> typedQuery5 = entityManager.createQuery(criteriaQuery4);
+		guides = typedQuery5.getResultList();
+		guides.forEach(g -> System.out.println(g.getName() + " " + g.getSalary()));
 	}
 }
