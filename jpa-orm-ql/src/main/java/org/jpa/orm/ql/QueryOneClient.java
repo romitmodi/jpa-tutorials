@@ -13,6 +13,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Selection;
 
 import org.jpa.orm.ql.entity.Guide;
 import org.jpa.orm.ql.entity.Student;
@@ -81,6 +82,22 @@ public class QueryOneClient {
 		List<String> guidesName = typedQuery2.getResultList();
 		guidesName.forEach(g -> System.out.println(g.toString()));
 
-		// Scenario:-3 multiple attributes
+		// Scenario:-3.1 multiple attributes using select
+		CriteriaQuery<Object[]> query3 = builder.createQuery(Object[].class);
+		root = query3.from(Guide.class);
+		Path<String> nameP = root.get("name");
+		Path<BigDecimal> salaryP = root.get("salary");
+		query3.select(builder.array(nameP, salaryP));
+		TypedQuery<Object[]> typedQuery3 = entityManager.createQuery(query3);
+		List<Object[]> objects = typedQuery3.getResultList();
+		objects.forEach(o -> System.out.println(o[0] + " " + o[1]));
+
+		// Scenario:-3.2 multiple attributes using multiselect
+		CriteriaQuery<Object[]> criteriaQuery3 = builder.createQuery(Object[].class);
+		root = criteriaQuery3.from(Guide.class);
+		criteriaQuery3.multiselect(root.get("name"), root.get("salary"));
+		TypedQuery<Object[]> typedQuery4 = entityManager.createQuery(criteriaQuery3);
+		List<Object[]> objects1 = typedQuery4.getResultList();
+		objects1.forEach(o -> System.out.println(o[0] + " " + o[1]));
 	}
 }
