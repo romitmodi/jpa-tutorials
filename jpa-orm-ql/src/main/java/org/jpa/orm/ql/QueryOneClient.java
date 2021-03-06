@@ -31,6 +31,17 @@ public class QueryOneClient {
 		entityManager.persist(g2);
 		transaction.commit();
 		transaction.begin();
+		// JPQL usage
+		jpqlTransaction(entityManager);
+		// Criteria API
+		criteriaApiTransaction(entityManager);
+		transaction.commit();
+		entityManager.close();
+		entityManagerFactory.close();
+
+	}
+
+	private static void jpqlTransaction(EntityManager entityManager) {
 		Query studentQuery = entityManager
 		        .createQuery("SELECT s.name,s.enrollmentId from Student s where s.guide is null");
 		List<Student> students = studentQuery.getResultList();
@@ -40,15 +51,13 @@ public class QueryOneClient {
 		        "select g.name, g.staffId from Guide g WHERE NOT Exists ( SELECT 1 from Student s where s.guide=g)");
 		List<Guide> guides = guideQuery.getResultList();
 		System.out.println(guides);
-		
-		Query query2 =entityManager.createQuery(
-		        "select g from Guide g join g.students s WHERE s.name like 'R%'");
+
+		Query query2 = entityManager.createQuery("select g from Guide g join g.students s WHERE s.name like 'R%'");
 		guides = query2.getResultList();
 		System.out.println(guides);
-		transaction.commit();
-		entityManager.close();
-		entityManagerFactory.close();
-
 	}
 
+	private static void criteriaApiTransaction(EntityManager entityManager) {
+
+	}
 }
