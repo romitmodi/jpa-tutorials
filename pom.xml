@@ -10,7 +10,8 @@
 	<modules>
 		<module>jpa-core-impl</module>
 		<module>jpa-orm</module>
-    <module>jpa-orm-ql</module>
+		<module>jpa-orm-ql</module>
+		<module>jpa-orm-ipq</module>
   </modules>
 
 	<properties>
