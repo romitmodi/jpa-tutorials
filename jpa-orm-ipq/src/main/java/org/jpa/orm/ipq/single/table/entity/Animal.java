@@ -41,5 +41,10 @@ public abstract class Animal {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "Animal [id=" + id + ", name=" + name + "]";
+	}
+
 	public abstract String makeNoise();
 }
