@@ -7,6 +7,9 @@
 
     <persistence-unit name="hibernate-ql">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>org.jpa.orm.ipq.single.table.entity.Animal</class>
+        <class>org.jpa.orm.ipq.single.table.entity.Dog</class>
+        <class>org.jpa.orm.ipq.single.table.entity.Cat</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testdb" />
